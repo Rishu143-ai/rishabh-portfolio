@@ -4,17 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rishabh Sanjay Dubey | Portfolio</title>
-  <!--SEO & Social Media Preview-->
-    <meta name="description" content="Full-Stack Developer | HTML, CSS, JavaScript, Python, Flask,and Django.Passionate about building responsive, user-friendly web applications, and modern web experiences." />
-    <meta name="keywords" content="Rishabh Dubey, Portfolio, Full-Stack Developer, Web Developer, Python Developer HTML, CSS, JavaScript, Flask, and Django." />
-    <meta name="author" content="Rishabh Sanjay Dubey" />
-    <meta property="og:title" content="Rishabh Sanjay Dubey | Portfolio" />
-    <meta property="og:description" content="Full-Stack Developer | Passionate about crafting responsive web experiences." />
-    <meta property="og:image" content="https://rishu143-ai.github.io/rishabh-portfolio/your-image.jpeg" />
-    <meta property="og:url" content="https://rishu143-ai.github.io/rishabh-portfolio/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rishabh Sanjay Dubey | Portfolio" />
+  <meta name="description" content="Full-Stack Developer | HTML, CSS, JavaScript, Python, Flask,and Django." />
+  <meta name="keywords" content="Rishabh Dubey, Portfolio, Full-Stack Developer, Web Developer, Python Developer HTML, CSS, JavaScript, Flask, Django" />
+  <meta name="author" content="Rishabh Sanjay Dubey" />
+  <meta property="og:title" content="Rishabh Sanjay Dubey | Portfolio" />
+  <meta property="og:description" content="Full-Stack Developer | Passionate about crafting responsive web experiences." />
+  <meta property="og:image" content="https://rishu143-ai.github.io/rishabh-portfolio/your-image.jpeg" />
+  <meta property="og:url" content="https://rishu143-ai.github.io/rishabh-portfolio/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rishabh Sanjay Dubey | Portfolio" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
@@ -55,6 +54,7 @@
     .hero h1 {
       font-size: 2.5rem;
       color: #00ffcc;
+      min-height: 3rem;
     }
     .hero p {
       color: #ccc;
@@ -69,25 +69,23 @@
       margin-bottom: 40px;
       font-weight: 600;
     }
-    .skills .skill-item {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .skills i {
-      font-size: 2rem;
-      color: #00ffcc;
-      margin-bottom: 10px;
+    .tech-icon {
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       transition: transform 0.3s;
     }
-    .skills i:hover {
-      transform: scale(1.2);
-      color: #fff;
+    .tech-icon:hover {
+      transform: scale(1.1);
     }
     .project-card {
       background: #161b22;
       border-radius: 10px;
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
     .project-card:hover {
       transform: translateY(-5px);
@@ -108,39 +106,59 @@
       color: #888;
       margin-top: 50px;
     }
-    @keyframes fadeInUp {
-      0% {opacity: 0; transform: translateY(20px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
     .animated {
-      animation: fadeInUp 1s ease;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .form-control, .btn {
       border-radius: 8px;
     }
-    /* Light Mode Styles */
-body.light-mode {
-  background-color: #f7f7f7;
-  color: #111;
+    body.light-mode {
+      background-color: #f7f7f7;
+      color: #111;
+    }
+    body.light-mode nav {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    body.light-mode .section-title {
+      color: #007bff;
+    }
+    body.light-mode .project-card {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+  background-color: #161b22;
+  border: 1px solid #00ffcc;
+  color: #fff;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
-
-body.light-mode nav {
-  background: rgba(255, 255, 255, 0.9);
+form input:focus, form textarea:focus {
+  box-shadow: 0 0 10px #00ffcc;
+  transform: scale(1.02);
 }
-
-body.light-mode .section-title {
-  color: #007bff;
-}
-
-body.light-mode .project-card {
-  background: #fff;
+form button {
+  background-color: #00ffcc;
+  border: none;
   color: #000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.3s;
+}
+form button:hover {
+  background-color: #00e6b8;
+  transform: scale(1.05);
 }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Rishabh Dubey</a>
@@ -155,109 +173,138 @@ body.light-mode .project-card {
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
+      <button id="theme-toggle" class="btn btn-outline-light ms-3">🌙</button>
     </div>
-    <button id="theme-toggle" class="btn btn-outline-light ms-3">🌙</button>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="container animated">
+    <div class="container">
       <img src="your-image.jpeg" alt="Rishabh Dubey" />
-      <h1>Hi, I’m Rishabh Dubey 👋</h1>
+      <h1></h1>
       <p>I’m a Computer Science graduate passionate about turning code into craft. I create responsive, dynamic, and human-centered digital experiences.</p>
     </div>
   </section>
 
-  <!-- About -->
   <section id="about" class="container">
     <h2 class="section-title">About Me</h2>
-    <p class="text-center">As a fresher in the IT sector, I bring a strong foundation in full-stack development—fluent in HTML, CSS, JavaScript, Bootstrap, SQL, Python, Flask, and Django. My approach blends technical precision with creative rhythm, building responsive websites that are both functional and emotionally engaging. I believe every project is a chance to tell a story—structured in logic, styled with care, and delivered with soul.</p>
+    <p class="text-center">As a fresher in the IT sector, I bring a strong foundation in full-stack development—fluent in HTML, CSS, JavaScript, Bootstrap, SQL, Python, Automation, Flask, and Django. My approach blends technical precision with creative rhythm, building responsive websites that are both functional and emotionally engaging. </p>
   </section>
 
-  <!-- Skills -->
   <section id="skills" class="container">
     <h2 class="section-title">Skills</h2>
-    <div class="skills">
-      <div class="skill-item"><i class="fab fa-html5"></i><p>HTML5 – Semantic structure for clean markup</p></div>
-      <div class="skill-item"><i class="fab fa-css3-alt"></i><p>CSS3 – Styling with responsiveness and animations</p></div>
-      <div class="skill-item"><i class="fab fa-js"></i><p>JavaScript – Dynamic interactions and logic</p></div>
-      <div class="skill-item"><i class="fab fa-bootstrap"></i><p>Bootstrap – Rapid layout and responsive design</p></div>
-      <div class="skill-item"><i class="fab fa-python"></i><p>Python – Backend logic and scripting</p></div>
-      <div class="skill-item"><i class="fas fa-database"></i><p>SQL – Data modeling and queries</p></div>
-      <div class="skill-item"><i class="fas fa-code"></i><p>Flask/Django – Full-stack web frameworks</p></div>
+    <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+      <div class="tech-icon" style="color:#e34c26;"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="tech-icon" style="color:#264de4;"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="tech-icon" style="color:#f0db4f;"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="tech-icon" style="color:#563d7c;"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+      <div class="tech-icon" style="color:#3776ab;"><i class="fab fa-python"></i> Python</div>
+      <div class="tech-icon" style="color:#f29111;"><i class="fas fa-database"></i> SQL</div>
+      <div class="tech-icon" style="color:#000;"><i class="fas fa-code"></i> Flask/Django</div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects" class="container">
     <h2 class="section-title">Projects</h2>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="project-card">
           <h4>🎵 Music Downloader</h4>
-          <p>A web app built using Saavn API to download songs easily. Designed a clean UI and integrated Flask for backend management.</p>
+          <p>A web app built using Saavn API to download songs easily. Designed a clean UI and integrated Flask for backend management. Used languages like HTML, CSS, and JavaScript for the frontend, and Python with Flask for the backend.</p>
+          <a href="https://github.com/rishu143-ai/music-downloader" target="_blank">View Project</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="project-card">
-          <h4>📝 Pastebin Clone</h4>
-          <p>A simple text-sharing platform built using Flask and SQL where users can create, share, and store text snippets securely.</p>
+          <br>
+          <h4>📝 Pastebin Website for Copy & Paste</h4>
+          <p>A simple website for sharing text snippets. By using HTML, CSS, JavaScript, Python, Flask, and SQLite3. I created a user-friendly interface that allows users to easily copy and paste their text, code, and more.</p>
+          <a href="https://github.com/rishu143-ai/pastebin-clone" target="_blank">View Project</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Contact -->
-  <section id="contact" class="container">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact text-center mb-4">
-      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:rishabhd193@gmail.com">rishabhd193@gmail.com</a></p>
-      <p><i class="fa-solid fa-phone"></i> <a href="tel:+919769428009">+91 9769428009</a></p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rishabh-dubey-99a72724a" target="_blank">LinkedIn Profile</a></p>
+  <section id="contact" class="container contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="text-center">Feel free to reach out for collaborations or just a friendly hello!</p>
+    <div class="d-flex justify-content-center gap-4 mt-4">
+       <a href="tel:+919769428009" class="btn btn-outline-primary"><i class="fas fa-phone"></i> +91 9769428009</a>
+      <br>
+      <a href="mailto:rishabhd@gmail.com" class="btn btn-outline-primary"><i class="fas fa-envelope"></i> rishabhd193@gmail.com</a>
+      <br>
+      <a href="https://www.linkedin.com/in/rishabh-dubey-99a72724a" target="_blank" class="btn btn-outline-primary">LinkedIn</a>
+      <br>
+      <a href="https://github.com/rishu143-ai" target="_blank" class="btn btn-outline-primary">GitHub</a>
     </div>
+    <div class="mt-5">
+  <h4 class="text-center mb-4">Send a Message</h4>
+  <form action="https://api.web3forms.com/submit" method="POST" class="row g-3 justify-content-center">
+    <input type="hidden" name="access_key" value="51f81c2a-6547-4a41-8b62-162ed52ebc1f" />
+    
+    <div class="col-md-5">
+      <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+    </div>
+    
+    <div class="col-md-5">
+      <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+    </div>
+    
+    <div class="col-md-10">
+      <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+    </div>
+    
+    <div class="col-md-10 text-center">
+      <button type="submit" class="btn btn-primary px-5">Send</button>
+    </div>
+  </form>
+</div>
+  </section>
+  <footer>
+    <p>&copy; 2024 Rishabh Sanjay Dubey. All rights reserved.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>  
+    const roles = ["Full-Stack Developer", "Web Developer", "Python Developer", "Tech Enthusiast"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    const typingSpeed = 100;
+    const erasingSpeed = 50;
+    const delayBetweenRoles = 2000;
+    const roleElement = document.querySelector('.hero h1');
 
-    <!-- Query Form -->
-    <form class="row g-3" action="mailto:rishabhd193@gmail.com" method="POST" enctype="text/plain">
-      <div class="col-md-6">
-        <input type="text" class="form-control" name="Name" placeholder="Your Name" required />
-      </div>
-      <div class="col-md-6">
-        <input type="email" class="form-control" name="Email" placeholder="Your Email" required />
-      </div>
-      <div class="col-12">
-          <textarea class="form-control" name="Message" rows="4" placeholder="Your Message" required></textarea>
-      </div>
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </div>
-    </form>
-    </section>
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2024 Rishabh Sanjay Dubey. All rights reserved.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-  const toggleBtn = document.getElementById("theme-toggle");
-  const body = document.body;
-
-  // Load saved theme
-  if (localStorage.getItem("theme") === "light") {
-    body.classList.add("light-mode");
-    toggleBtn.textContent = "☀️";
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    body.classList.toggle("light-mode");
-    if (body.classList.contains("light-mode")) {
-      localStorage.setItem("theme", "light");
-      toggleBtn.textContent = "☀️";
-    } else {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.textContent = "🌙";
+    function typeRole() {
+      if (charIndex < roles[roleIndex].length) {
+        roleElement.textContent += roles[roleIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeRole, typingSpeed);
+      } else {
+        setTimeout(eraseRole, delayBetweenRoles);
+      }
     }
-  });
-</script>
+
+    function eraseRole() {
+      if (charIndex > 0) {
+        roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseRole, erasingSpeed);
+      } else {
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeRole, typingSpeed);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (roles.length) setTimeout(typeRole, delayBetweenRoles);
+    });
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if(document.body.classList.contains('light-mode')) {
+        themeToggleBtn.textContent = '🌙';
+      } else {
+        themeToggleBtn.textContent = '☀️';
+      }
+    });
+  </script>
 </body>
 </html>
-
